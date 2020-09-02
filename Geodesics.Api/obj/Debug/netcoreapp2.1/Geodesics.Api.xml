@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Geodesics.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Geodesics.Api.Application.DistanceCalculatorFactory">
+            <summary>
+            The factory to configure the type of distance calculation strategy to be used
+            </summary>
+        </member>
+        <member name="M:Geodesics.Api.Application.DistanceCalculatorFactory.#ctor(System.IServiceProvider)">
+            <summary>
+            Initializes the service provider
+            </summary>
+            <param name="serviceProvider">
+            Mechanism for retrieving the service object
+            </param>
+        </member>
+        <member name="M:Geodesics.Api.Application.DistanceCalculatorFactory.GetDistanceCalculationStrategy(Geodesics.Api.Models.DistanceMethod)">
+            <summary>
+            Gets the concrete type of Calculation strategy being used
+            </summary>
+            <param name="distanceMethod"></param>
+            <returns>
+            The type of Calculation strategy being used
+            </returns>
+        </member>
+        <member name="M:Geodesics.Api.Controllers.DistanceController.#ctor(Geodesics.Api.Application.DistanceCalculatorFactory)">
+            <summary>
+            Constructor which initializes the factory being used to return the service for distance method calculation.
+            </summary>
+            <param name="distanceCalculatorFactory"></param>
+        </member>
+        <member name="M:Geodesics.Api.Controllers.DistanceController.Get(Geodesics.Api.Models.DistanceMethod,Geodesics.Api.Models.MeasureUnit,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Gets the response of the calculated distance between the points.
+            </summary>
+            <param name="distanceMethod"> The type of distance calculation method</param>
+            <param name="measureUnit"> Measurement unit used </param>
+            <param name="point1Latitude"> Latitude of the first point, ranges between -90 to 90</param>
+            <param name="point1Longitude"> Longitude of the first point, ranges between -180 to 180</param>
+            <param name="point2Latitude"> Latitude of the second point, ranges between -90 to 90</param>
+            <param name="point2Longitude"> Longitude of the second point, ranges between -180 to 180</param>
+            <returns>
+            DistanceResponse containing the distance value calculated.
+            </returns>
+            <response code="200">Distance successfully calculated.</response>
+            <response code="400">Latitude or longitude of any of the given points is out of range.</response>
+            <response code="500">Unexpected server exception.</response>
+        </member>
+        <member name="T:Geodesics.Api.Infrastructure.Swagger.LowercaseDocumentFilter">
+            <summary>
+            A Swagger document filter, which transforms all paths to lower case.
+            </summary>
+        </member>
+        <member name="T:Geodesics.Api.Models.DistanceMethod">
+            <summary>
+            The ennumeration for the type of distance method being calculated.
+            </summary>
+        </member>
+        <member name="M:Geodesics.Api.Models.DistancePoint.#ctor(System.Double,System.Double)">
+            <summary>
+            Initialises a new instance of the <see cref="T:Geodesics.Api.Models.DistancePoint"/> class.
+            </summary>
+            <param name="latitude">
+            The latitude of the point.
+            </param>
+            <param name="longitude">
+            The longitude of the point.
+            </param>
+        </member>
+        <member name="P:Geodesics.Api.Models.DistancePoint.Latitude">
+            <summary>
+            Using a private setter to prevent value from being modified elsewhere.
+            </summary>
+        </member>
+        <member name="P:Geodesics.Api.Models.DistancePoint.Longitude">
+            <summary>
+            Using a private setter to prevent value from being modified elsewhere.
+            </summary>
+        </member>
+        <member name="T:Geodesics.Api.Models.DistanceResponse">
+            <summary>
+            The response for the distance calculation
+            </summary>
+        </member>
+        <member name="P:Geodesics.Api.Models.DistanceResponse.Distance">
+            <summary>
+            The distance value
+            </summary>
+        </member>
+        <member name="T:Geodesics.Api.Models.MeasureUnit">
+            <summary>
+            Enumeration for the types of Measurement Units
+            </summary>
+        </member>
+        <member name="M:Geodesics.Api.Service.DistanceCalculationStrategy.CalculateDistance(Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.MeasureUnit)">
+             <summary>
+             The method which calculates the distance between the points.
+             </summary>
+             <param name="point1">The first distance point</param>
+             <param name="point2">the second distance point</param>
+             <param name="measureUnit">The type of the measurement unit</param>
+             <returns>
+            The distance between the points.
+             A double value.
+             </returns>
+        </member>
+        <member name="M:Geodesics.Api.Service.DistanceCalculationStrategy.DegreesToRadians(System.Double)">
+            <summary>
+            Converts degrees to radians
+            </summary>
+            <param name="degrees"> input degree</param>
+            <returns> Radians </returns>
+        </member>
+        <member name="M:Geodesics.Api.Service.DistanceCalculationStrategy.RadiansToDegrees(System.Double)">
+            <summary>
+            Converts radians to degrees
+            </summary>
+            <param name="radians">inout radians</param>
+            <returns>Degrees</returns>
+        </member>
+        <member name="M:Geodesics.Api.Service.DistanceCalculationStrategy.GetEarthRadius(Geodesics.Api.Models.MeasureUnit)">
+            <summary>
+            Gets the radius based on units
+            </summary>
+            <param name="measureUnit">the measurement unit</param>
+            <returns></returns>
+        </member>
+        <member name="T:Geodesics.Api.Service.GeodesicCurveDistanceCalculationStrategy">
+            <summary>
+            The distance calulation strategy using the Geodesic curve method
+            </summary>
+        </member>
+        <member name="M:Geodesics.Api.Service.GeodesicCurveDistanceCalculationStrategy.CalculateDistance(Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.MeasureUnit)">
+             <summary>
+             Calculates the distance between the points based on Geodesic curve method.
+             Implements the method defined in the abstract class.
+             </summary>
+             <param name="point1">The first distance point</param>
+             <param name="point2">the second distance point</param>
+             <param name="measureUnit">The type of the measurement unit</param>
+             <returns>
+            The distance between the points.
+             A double value.
+             </returns>
+        </member>
+        <member name="T:Geodesics.Api.Service.IDistanceCalculationStrategy">
+            <summary>
+            The interface for the caluclation strategy
+            </summary>
+        </member>
+        <member name="T:Geodesics.Api.Service.PythagorasDistanceCalculationStrategy">
+            <summary>
+            The distance calulation strategy using the Pythagoras method
+            </summary>
+        </member>
+        <member name="M:Geodesics.Api.Service.PythagorasDistanceCalculationStrategy.CalculateDistance(Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.DistancePoint,Geodesics.Api.Models.MeasureUnit)">
+             <summary>
+             Calculates the distance between the points based on Pythagoras method.
+             Implements the method defined in the abstract class.
+             </summary>
+             <param name="point1">The first distance point</param>
+             <param name="point2">the second distance point</param>
+             <param name="measureUnit">The type of the measurement unit</param>
+             <returns>
+            The distance between the points.
+             A double value.
+             </returns>
+        </member>
+        <member name="M:Geodesics.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"> Specifies the various services configured</param>
+        </member>
+    </members>
+</doc>

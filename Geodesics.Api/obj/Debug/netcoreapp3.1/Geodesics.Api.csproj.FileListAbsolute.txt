@@ -1,0 +1,6 @@
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.csprojAssemblyReference.cache
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.AssemblyInfoInputs.cache
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.AssemblyInfo.cs
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.csproj.CoreCompileInputs.cache
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\E9AN\Documents\Geodesics (Coding Challenge)\Geodesics\Geodesics.Api\obj\Debug\netcoreapp3.1\Geodesics.Api.MvcApplicationPartsAssemblyInfo.cache
